@@ -4,9 +4,10 @@ import * as dotenv from 'dotenv';
 import { insertShiftDetails, findShiftDetails, editShiftDetails } from './helper.js';
 import cors from 'cors';
 
-app.use(cors())
+
 dotenv.config()
 const app = express()
+app.use(cors())
 app.use(express.json())
 
 const URL = process.env.MONGO_URL
