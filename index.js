@@ -2,7 +2,9 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import * as dotenv from 'dotenv';
 import { insertShiftDetails, findShiftDetails, editShiftDetails } from './helper.js';
+import cors from 'cors';
 
+app.use(cors())
 dotenv.config()
 const app = express()
 app.use(express.json())
