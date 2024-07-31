@@ -1,12 +1,13 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import * as dotenv from 'dotenv';
-import { insertShiftDetails, findShiftDetails, editShiftDetails } from './helper.js';
 import cors from 'cors';
+import { shiftDetailsRoute } from './routes/shiftDetails.js';
+import { recipeDetailsRoute } from './routes/recipeDetails.js';
 
 
 dotenv.config()
-const app = express()
+export const app = express()
 app.use(cors())
 app.use(express.json())
 
@@ -29,24 +30,7 @@ app.get("/", (req, res) => {
     res.send("Bias Cutter")
 })
 
-app.get("/shift-details/:id", async (req, res) => {
-    const {id} = req.params
-    console.log(typeof(id))
-    const result = await findShiftDetails(+id)
-    res.send(result)
-})
-
-app.post("/post-shift-details", async (req, res) => {
-    const data = req.body
-    console.log(data)
-    const result = await insertShiftDetails(data)
-    res.send(result)
-})
-
-app.put("/edit-shift-details", async (req, res) => {
-    const data = req.body
-    const result = await editShiftDetails(data)
-    res.send(result)
-})
+app.use("/shift-details", shiftDetailsRoute)
+app.use("/recipe-details", recipeDetailsRoute)
 
 app.listen(4000, () => console.log("server started"))

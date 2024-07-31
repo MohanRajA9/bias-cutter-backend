@@ -1,14 +1,22 @@
 import { client } from './index.js';
 
 
-export const insertShiftDetails = (data) => {
+const insertShiftDetails = (data) => {
     return client.db("BiasCutter").collection("shiftDetails").insertOne(data);
 };
-export function findShiftDetails(id)  {
+function findShiftDetails(id)  {
     return client.db("BiasCutter").collection("shiftDetails").findOne({ shiftNo: id });
 };
-export const editShiftDetails = (data) => {
+const editShiftDetails = (data) => {
     return client.db("BiasCutter").collection("shiftDetails").updateOne({ plan: data.plan }, { $set: data });
 };
+const postRecipeDetails = (data) => {
+    return client.db("BiasCutter").collection("recipeDetails").insertOne(data);
+}
 
+const getRecipeDetails = (id) => {
+    return client.db("BiasCutter").collection("recipeDetails").findOne({ shiftNo: id });
+}
+
+export {insertShiftDetails, findShiftDetails, editShiftDetails, postRecipeDetails, getRecipeDetails }
 
