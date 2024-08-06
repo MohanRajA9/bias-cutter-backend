@@ -5,6 +5,7 @@ import cors from 'cors';
 import { shiftDetailsRoute } from './routes/shiftDetails.js';
 import { recipeDetailsRoute } from './routes/recipeDetails.js';
 import { hourBasedProductionRoute } from './routes/hourBasedProduction.js';
+import { machineDownTimeRoute } from './routes/machineDownTime.js';
 
 
 dotenv.config()
@@ -34,5 +35,6 @@ app.get("/", (req, res) => {
 app.use("/shift-details", shiftDetailsRoute)
 app.use("/recipe-details", recipeDetailsRoute)
 app.use("/hour-based-production", hourBasedProductionRoute)
+app.use("/machine-down-time",machineDownTimeRoute)
 
 app.listen(4000, () => console.log("server started"))
