@@ -31,8 +31,16 @@ const postMachineDownTime = (data) => {
 }
 
 const getDownTime = (id) => {
-    return client.db("BiasCutter").collection("machineDownTime").findOne({shiftNo : id})
+    return client.db("BiasCutter").collection("machineDownTime").findOne({ shiftNo: id })
 }
 
-export { insertShiftDetails, findShiftDetails, editShiftDetails, postRecipeDetails, getRecipeDetails, postHourBasedProduction, getHourBasedProduction, postMachineDownTime, getDownTime }
+const postMachineLossTime = (data) => {
+    return client.db("BiasCutter").collection("machineLossTime").insertMany(data)
+}
+
+const getMachineLossTime = (id) => {
+    return client.db("BiasCutter").collection("machineLossTime").findOne({ shiftNo: id })
+}
+
+export { insertShiftDetails, findShiftDetails, editShiftDetails, postRecipeDetails, getRecipeDetails, postHourBasedProduction, getHourBasedProduction, postMachineDownTime, getDownTime, postMachineLossTime, getMachineLossTime }
 

@@ -6,6 +6,7 @@ import { shiftDetailsRoute } from './routes/shiftDetails.js';
 import { recipeDetailsRoute } from './routes/recipeDetails.js';
 import { hourBasedProductionRoute } from './routes/hourBasedProduction.js';
 import { machineDownTimeRoute } from './routes/machineDownTime.js';
+import { machineLossTimeRoute } from './routes/machineLossTime.js';
 
 
 dotenv.config()
@@ -36,5 +37,6 @@ app.use("/shift-details", shiftDetailsRoute)
 app.use("/recipe-details", recipeDetailsRoute)
 app.use("/hour-based-production", hourBasedProductionRoute)
 app.use("/machine-down-time",machineDownTimeRoute)
+app.use("/machine-loss-time",machineLossTimeRoute)
 
 app.listen(4000, () => console.log("server started"))
