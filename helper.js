@@ -4,7 +4,7 @@ import { client } from './index.js';
 const insertShiftDetails = (data) => {
     return client.db("BiasCutter").collection("shiftDetails").insertOne(data);
 };
-function findShiftDetails(id)  {
+function findShiftDetails(id) {
     return client.db("BiasCutter").collection("shiftDetails").findOne({ shiftNo: id });
 };
 const editShiftDetails = (data) => {
@@ -18,5 +18,13 @@ const getRecipeDetails = (id) => {
     return client.db("BiasCutter").collection("recipeDetails").findOne({ shiftNo: id });
 }
 
-export {insertShiftDetails, findShiftDetails, editShiftDetails, postRecipeDetails, getRecipeDetails }
+const postHourBasedProduction = (data) => {
+    return client.db("BiasCutter").collection("hourBasedProduction").insertOne(data)
+}
+
+const getHourBasedProduction = (id) => {
+    return client.db("BiasCutter").collection("hourBasedProduction").findOne({ shiftNo: id })
+}
+
+export { insertShiftDetails, findShiftDetails, editShiftDetails, postRecipeDetails, getRecipeDetails, postHourBasedProduction, getHourBasedProduction }
 
